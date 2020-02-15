@@ -1,0 +1,58 @@
+CREATE TABLE volume(
+    id           int PRIMARY KEY,
+    mount_point  varchar(255),
+    size         int
+    );
+
+
+CREATE TABLE credentials(
+    id           int PRIMARY KEY,
+    username     varchar(255),
+    password     varchar(255),
+    domain       varchar(255)
+    );
+
+
+CREATE TABLE workload(
+    id                       int PRIMARY KEY,
+    IP                       inet,
+    credentials_username     varchar(255),
+    credentials_password     varchar(255),
+    credentials_domain       varchar(255),
+    storage                  list
+    );
+
+
+CREATE TABLE target_cloud(
+    id                                 int PRIMARY KEY,
+    cloud_type                         text,
+    cloud_credentials_username         varchar(255),
+    cloud_credentials_password         varchar(255),
+    cloud_credentials_domain           varchar(255),
+    target_vm_IP                       inet,
+    target_vm_credentials_username     varchar(255),
+    target_vm_credentials_password     varchar(255),
+    target_vm_credentials_domain       varchar(255),
+    target_vm_storage                  list
+    );
+
+
+CREATE TABLE target_cloud(
+    id                                            int PRIMARY KEY,
+    selected_mount_points                         list,
+    source_IP                                     inet,
+    source_credentials_username                   varchar(255),
+    source_credentials_password                   varchar(255),
+    source_credentials_domain                     varchar(255),
+    source_storage                                list,
+    targetCloud_cloud_type                        text,
+    targetCloud_cloud_credentials_username        varchar(255),
+    targetCloud_loud_credentials_password         varchar(255),
+    targetCloud_cloud_credentials_domain          varchar(255),
+    targetCloud_target_vm_IP                      inet,
+    targetCloud_target_vm_credentials_username    varchar(255),
+    targetCloud_target_vm_credentials_password    varchar(255),
+    targetCloud_target_vm_credentials_domain      varchar(255),
+    targetCloud_target_vm_storage                 list
+    migration_state                               varchar(255)
+    );
